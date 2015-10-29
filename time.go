@@ -6,6 +6,9 @@ import "time"
 // while using the time values from the given time (day, hour, minutes, etc.)
 func TimeWithLocation(l *time.Location, t time.Time) time.Time {
 	y, m, d := t.Date()
+	if l == nil {
+		l = time.UTC
+	}
 	return time.Date(y, m, d, t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), l)
 }
 

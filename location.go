@@ -5,6 +5,9 @@ import "time"
 // SetLocation updates the location of the given time,
 // while preserving the time values (day, hour, minutes, etc.)
 func SetLocation(l *time.Location, t *time.Time) {
+	if l == nil {
+		l = time.UTC
+	}
 	_, z1 := t.Zone()
 	ll := t.Location()
 	*ll = *l
